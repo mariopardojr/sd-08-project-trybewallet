@@ -52,14 +52,14 @@ class WalletTable extends React.Component {
               </td>
               <td>Real</td>
               <td>
-                <button
+                {/* <button
                   type="button"
                   value={ expense.description }
                   onClick={ () => this.handleClick(expense) }
                   data-testid="edit-btn"
                 >
                   Editar
-                </button>
+                </button> */}
                 <button
                   type="button"
                   data-testid="delete-btn"

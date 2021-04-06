@@ -8,11 +8,12 @@ import EditExpenseForm from '../components/EditExpenseForm';
 
 class Wallet extends React.Component {
   render() {
-    const { isEditing } = this.props;
+    // const { isEditing } = this.props;
     return (
       <section>
         <Header />
-        {isEditing ? <EditExpenseForm /> : <ExpenseForm />}
+        {/* {isEditing ? <EditExpenseForm /> : <ExpenseForm />} */}
+        <ExpenseForm />
         <WalletTable />
       </section>
     );
