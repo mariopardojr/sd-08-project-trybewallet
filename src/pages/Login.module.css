@@ -1,0 +1,58 @@
+main {
+  align-items: center;
+  background-color: rgb(71, 71, 71);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.loginHeader {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginHeader h2 {
+  margin-bottom: 0;
+}
+
+.container {
+  background: rgb(5, 53, 185);
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  min-height: 20vh;
+  padding: 10px 15px 30px;
+
+}
+
+.icon {
+  width: 50%;
+}
+
+.inputField {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.inputField input {
+  min-height: 25px;
+}
+
+.inputField button {
+  background-color: rgb(90, 63, 170);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  height: 30px;
+}
+
+.inputField button:disabled {
+  color: rgb(110, 110, 110);
+}
