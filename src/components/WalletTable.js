@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteExpense as deleteExpenseAction,
   editExpense as editExpenseAction } from '../actions';
-import './WalletTable.css';
+import styles from '../styles/WalletTable.module.css';
 
 class WalletTable extends React.Component {
   constructor() {
@@ -29,49 +29,45 @@ class WalletTable extends React.Component {
     const fields = ['Descrição', 'Tag', 'Método de pagamento', 'Valor', 'Moeda',
       'Câmbio utilizado', 'Valor convertido', 'Moeda de conversão', 'Editar/Excluir'];
     return (
-      <table>
-        <tbody>
-          <tr>
-            {fields.map((field) => <th key={ field }>{field}</th>)}
-          </tr>
-          {expenses.map((expense) => (
-            <tr key={ expense.id }>
-              <td>{expense.description}</td>
-              <td>{expense.tag}</td>
-              <td>{expense.method}</td>
-              <td>{expense.value}</td>
-              <td>{expense.exchangeRates[expense.currency].name}</td>
-              <td>
-                {parseFloat(expense.exchangeRates[expense.currency].ask)
-                  .toFixed(2)}
-              </td>
-              <td>
-                {parseFloat(
-                  expense.value * expense.exchangeRates[expense.currency].ask,
-                ).toFixed(2)}
-              </td>
-              <td>Real</td>
-              <td>
-                {/* <button
-                  type="button"
-                  value={ expense.description }
-                  onClick={ () => this.handleClick(expense) }
-                  data-testid="edit-btn"
-                >
-                  Editar
-                </button> */}
-                <button
-                  type="button"
-                  data-testid="delete-btn"
-                  value={ expense.description }
-                  onClick={ this.deleteExpense }
-                >
-                  Excluir
-                </button>
-              </td>
-            </tr>))}
-        </tbody>
-      </table>
+      <div className={ styles.walletTable }>
+        <table>
+          <thead>
+            <tr>
+              {fields.map((field) => <th key={ field }>{field}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {expenses.map((expense) => (
+              <tr key={ expense.id }>
+                <td>{expense.description}</td>
+                <td>{expense.tag}</td>
+                <td>{expense.method}</td>
+                <td>{expense.value}</td>
+                <td>{expense.exchangeRates[expense.currency].name}</td>
+                <td>
+                  {parseFloat(expense.exchangeRates[expense.currency].ask)
+                    .toFixed(2)}
+                </td>
+                <td>
+                  {parseFloat(
+                    expense.value * expense.exchangeRates[expense.currency].ask,
+                  ).toFixed(2)}
+                </td>
+                <td>Real</td>
+                <td>
+                  <button
+                    type="button"
+                    data-testid="delete-btn"
+                    value={ expense.description }
+                    onClick={ this.deleteExpense }
+                  >
+                    Excluir
+                  </button>
+                </td>
+              </tr>))}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }

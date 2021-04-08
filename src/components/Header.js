@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import walletIcon from '../icons/walletIcon.svg';
+import styles from '../styles/Header.module.css';
 
 class Header extends React.Component {
   constructor() {
@@ -24,13 +26,19 @@ class Header extends React.Component {
     const { email } = this.props;
     return (
       <header>
-        <span data-testid="email-field">{`Email: ${email}`}</span>
-        <span
-          data-testid="total-field"
-        >
-          {`Despesa Total: R$ ${this.getTotalExpenses()} `}
-        </span>
-        <span data-testid="header-currency-field">BRL</span>
+        <div className={ styles.title }>
+          <img className={ styles.icon } src={ walletIcon } alt="Wallet Icon" />
+          <h2>Trybe Wallet</h2>
+        </div>
+        <div className={ styles.userInfo }>
+          <span data-testid="email-field">{`Email: ${email}`}</span>
+          <span
+            data-testid="total-field"
+          >
+            {`Despesa Total: R$ ${this.getTotalExpenses()} `}
+            <span data-testid="header-currency-field">BRL</span>
+          </span>
+        </div>
       </header>
     );
   }

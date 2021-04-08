@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addNewExpense, fetchingCurrenciesThunk } from '../actions';
 import getCurrencyPrice from '../services/getCurrencyPrice';
+import styles from '../styles/ExpenseForm.module.css';
 
 const INITIAL_STATE = {
   id: 0,
@@ -74,10 +75,43 @@ class ExpenseForm extends React.Component {
     });
   }
 
+  renderInputText(value, description) {
+    return (
+      <div className={ styles.inputText }>
+        <div>
+          <label htmlFor="input-value">
+            Valor:
+            <input
+              type="text"
+              id="input-value"
+              name="value"
+              value={ value }
+              onChange={ this.handleChange }
+              data-testid="value-input"
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="input-description">
+            Descrição:
+            <input
+              type="text"
+              id="input-description"
+              name="description"
+              value={ description }
+              onChange={ this.handleChange }
+              data-testid="description-input"
+            />
+          </label>
+        </div>
+      </div>
+    );
+  }
+
   renderCurrencyDropdown() {
     const { currencies } = this.props;
     return (
-      <label htmlFor="input-currency">
+      <label className={ styles.dropdown } htmlFor="input-currency">
         Moeda:
         <select
           name="currency"
@@ -104,7 +138,7 @@ class ExpenseForm extends React.Component {
   renderPaymentDropdown() {
     const method = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     return (
-      <label htmlFor="input-method">
+      <label className={ styles.dropdown } htmlFor="input-method">
         Método de pagamento:
         <select
           name="method"
@@ -127,7 +161,7 @@ class ExpenseForm extends React.Component {
   renderTagDropdown() {
     const type = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     return (
-      <label htmlFor="input-tag">
+      <label className={ styles.dropdown } htmlFor="input-tag">
         Tag:
         <select
           name="tag"
@@ -144,34 +178,13 @@ class ExpenseForm extends React.Component {
   render() {
     const { value, description } = this.state;
     return (
-      <form>
-        <label htmlFor="input-value">
-          Valor:
-          <input
-            type="text"
-            id="input-value"
-            name="value"
-            value={ value }
-            onChange={ this.handleChange }
-            data-testid="value-input"
-          />
-        </label>
-        <label htmlFor="input-description">
-          Descrição:
-          <input
-            type="text"
-            id="input-description"
-            name="description"
-            value={ description }
-            onChange={ this.handleChange }
-            data-testid="description-input"
-          />
-        </label>
+      <div className={ styles.expenseForm }>
+        {this.renderInputText(value, description)}
         {this.renderCurrencyDropdown()}
         {this.renderPaymentDropdown()}
         {this.renderTagDropdown()}
         <button type="button" onClick={ this.handleClick }>Adicionar despesa</button>
-      </form>
+      </div>
     );
   }
 }

@@ -1,0 +1,36 @@
+th , td {
+  color: rgb(26, 26, 26);
+  padding: 10px 50px;
+  text-align: center;
+}
+
+th {
+  background-color: rgb(59, 59, 59);
+  color: white;
+  padding: 20px 0;
+}
+
+tr:nth-child( even ) {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.walletTable {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  background-color: rgb(146, 146, 146);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table button {
+  background-color: rgb(2, 146, 224);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+}
